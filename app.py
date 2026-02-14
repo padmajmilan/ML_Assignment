@@ -360,6 +360,23 @@ elif page == "✅ Validate Models":
 elif page == "🔍 Make Predictions":
     st.header("🔍 Make Predictions")
 
+    # ==================== DOWNLOAD TEST DATA ====================
+    test_data_path = "model/validation_data_for_prediction.csv"
+
+    if os.path.exists(test_data_path):
+        with open(test_data_path, "rb") as file:
+            st.download_button(
+                label="📥 Download Test Data",
+                data=file,
+                file_name="model/validation_data_for_prediction.csv",
+                mime="text/csv"
+            )
+    else:
+        st.warning("⚠️ Test data file not found: model/validation_data_for_prediction.csv")
+
+    st.markdown("---")
+
+
     if not models_exist:
         st.error("❌ Models not trained yet. Please run `python model/train_models.py` first.")
     else:

@@ -19,7 +19,7 @@ We implement and compare **6 different machine learning models** with hyperparam
 
 **Source:** UCI Machine Learning Repository - Bank Marketing Data Set
 
-**Total Records:** 45,211 records (split into Train: 36,000 | Test: 4,000 | Validation: 3,639)
+**Total Records:** 45,211 records (split into Train: 36,000 records (from 'model/bank-train-data.csv') | Test: 4,000 | Validation: 3,639)
 
 **Target Variable:** `y` - Whether the client subscribed to a term deposit (yes/no)
 
