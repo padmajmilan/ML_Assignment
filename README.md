@@ -176,7 +176,8 @@ The app will be available at `http://localhost:8501`
 1. **🏠 Home** - Overview of the dataset and models
 2. **📊 Model Comparison** - Compare all models with visualizations
 3. **✅ Validate Models** - Validate models using held-out validation data
-4. **🔍 Make Predictions** - Upload CSV (without target column) or enter data manually
+4. **🔍 Make Predictions** - Download the test data using "📥 Download Test Data" button
+                             and use it to make predictions via "Upload CSV file" or enter data manually
 5. **📈 Feature Importance** - View feature importance for tree-based models
 
 ---

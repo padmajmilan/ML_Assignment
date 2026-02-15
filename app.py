@@ -554,7 +554,7 @@ elif page == "📈 Feature Importance":
     else:
         model_choice = st.selectbox(
             "Select Model for Feature Importance",
-            ["Random Forest", "XGBoost", "Decision Tree"]
+            ["Random Forest", "XGBoost", "Decision Tree","KNN","Naive Bayes", "Logistic Regression"]
         )
 
         try:
