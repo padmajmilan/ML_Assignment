@@ -387,8 +387,6 @@ elif page == "🔍 Make Predictions":
 
         st.markdown("---")
 
-        st.info("💡 **Tip:** Upload `model/validation_data_for_prediction.csv` to test predictions on validation data (without target column).")
-
         tab1, tab2 = st.tabs(["📁 Upload CSV File", "✍️ Manual Input"])
 
         with tab1:
