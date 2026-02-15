@@ -28,7 +28,7 @@ st.markdown("---")
 st.sidebar.title("Navigation")
 page = st.sidebar.radio(
     "Select Page",
-    ["🏠 Home", "📊 Model Comparison", "✅ Validate Models", "🔍 Make Predictions", "📈 Feature Importance"]
+    ["🏠 Home", "📊 Model Comparison", "✅ Validate Models", "🔍 Make Predictions"]
 )
 
 # Check if models exist
