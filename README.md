@@ -72,14 +72,14 @@ We implement and compare **6 different machine learning models** with hyperparam
 
 ### Model Comparison Table - Evaluation Metrics
 
-| ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
-|---------------|----------|-----|-----------|--------|-----|-----|
-| Logistic Regression | 0.8103 | 0.8881 | 0.3520 | 0.8015 | 0.4892 | 0.4440 |
-| Decision Tree | 0.8296 | 0.8714 | 0.3803 | 0.8002 | 0.5156 | 0.4713 |
-| KNN | 0.8918 | 0.7810 | 0.5351 | 0.3456 | 0.4200 | 0.3739 |
-| Naive Bayes | 0.8431 | 0.8470 | 0.3758 | 0.5821 | 0.4567 | 0.3821 |
-| Random Forest | 0.8962 | 0.9189 | 0.5366 | 0.6201 | 0.5753 | 0.5183 |
-| XGBoost  | 0.9096 | 0.9320 | 0.6359 | 0.4730 | 0.5425 | 0.5002 |
+| ML Model Name       | Accuracy | AUC    | Precision | Recall | F1 Score | MCC    |
+|---------------------| -------- | ------ | --------- | ------ | -------- | ------ |
+| Logistic Regression | 0.7686   | 0.8864 | 0.2487    | 0.8462 | 0.3844   | 0.3739 |
+| Decision Tree       | 0.8510   | 0.8187 | 0.3327    | 0.7413 | 0.4593   | 0.4290 |
+| KNN                 | 0.9126   | 0.7702 | 0.4799    | 0.2839 | 0.3568   | 0.3256 |
+| Naive Bayes         | 0.8873   | 0.8668 | 0.3917    | 0.5790 | 0.4673   | 0.4166 |
+| Random Forest       | 0.9175   | 0.9215 | 0.5151    | 0.5734 | 0.5427   | 0.4984 |
+| XGBoost             | 0.9267   | 0.9357 | 0.6091    | 0.3944 | 0.4788   | 0.4534 |
 
 ### Hyperparameters Tuned
 
