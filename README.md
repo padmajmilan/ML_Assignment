@@ -15,7 +15,7 @@ We implement and compare **6 different machine learning models** with hyperparam
 
 ## b. Dataset Description
 
-**Dataset:** UCI Bank Marketing Dataset (`bank-full.csv`)
+**Dataset:** UCI Bank Marketing Dataset
 
 **Source:** UCI Machine Learning Repository - Bank Marketing Data Set
 
@@ -24,6 +24,16 @@ We implement and compare **6 different machine learning models** with hyperparam
 **Target Variable:** `y` - Whether the client subscribed to a term deposit (yes/no)
 
 **Target Distribution:** Imbalanced dataset (~88% No, ~12% Yes)
+
+## 🖥️ Streamlit App Features
+
+1. **🏠 Home** - Overview of the dataset and models
+2. **📊 Model Comparison** - Compare all models with visualizations of its evaluation metrics using training data.
+3. **✅ Validate Models** - Validate models using held-out validation data.Click "Validate Model" button.
+   "Single Model Validation" gives "Classification Report" and "Confusion Matrix"
+4. **🔍 Make Predictions** - Download the test data without output label using "📥 Download Test Data" button
+   and use it to make predictions via "Upload CSV file" or enter data manually
+---
 
 ### Features Description
 
@@ -115,72 +125,7 @@ We implement and compare **6 different machine learning models** with hyperparam
 - **Feature Engineering:** Created 8 domain-specific features to improve model performance
 - **Hyperparameter Tuning:** Used GridSearchCV with 5-fold cross-validation for optimal parameters
 
----
 
-## 📁 Project Structure
-
-```
-ML_Assignment/
-├── app.py                      # Streamlit web application
-├── bank-full.csv               # Original UCI Bank Marketing Dataset
-├── bank-train-data.csv         # Training data (36,000 records)
-├── bank-test-data.csv          # Test data (4,000 records)
-├── bank-validation-data.csv    # Validation data (3,639 records)
-├── requirements.txt            # Python dependencies
-├── README.md                   # Project documentation
-├── prepare_validation.py       # Script to prepare validation data
-└── model/
-    ├── train_models.py         # Model training script with hyperparameter tuning
-    ├── utils.py                # Utility functions for feature engineering
-    ├── *.pkl                   # Saved trained models
-    ├── model_metrics.csv       # Model evaluation metrics
-    ├── best_params.csv         # Best hyperparameters for each model
-    ├── validation_data_for_prediction.csv  # Validation data without target (for predictions)
-    └── validation_data_with_labels.csv     # Validation data with target (for evaluation)
-```
-
----
-
-## 🚀 Getting Started
-
-### 1. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 2. Train the Models
-
-```bash
-python model/train_models.py
-```
-
-### 3. Prepare Validation Data
-
-```bash
-python prepare_validation.py
-```
-
-### 4. Run the Streamlit App
-
-```bash
-streamlit run app.py
-```
-
-The app will be available at `http://localhost:8501`
-
----
-
-## 🖥️ Streamlit App Features
-
-1. **🏠 Home** - Overview of the dataset and models
-2. **📊 Model Comparison** - Compare all models with visualizations
-3. **✅ Validate Models** - Validate models using held-out validation data
-4. **🔍 Make Predictions** - Download the test data using "📥 Download Test Data" button
-                             and use it to make predictions via "Upload CSV file" or enter data manually
-5. **📈 Feature Importance** - View feature importance for tree-based models
-
----
 
 ## 📦 Dependencies
 
@@ -195,26 +140,6 @@ The app will be available at `http://localhost:8501`
 
 ---
 
-## 👨‍💻 Usage
-
-### Making Predictions Programmatically
-
-```python
-import joblib
-import pandas as pd
-
-# Load model
-model = joblib.load("model/Random_Forest.pkl")
-
-# Load and preprocess your data
-# ... apply feature engineering ...
-
-# Predict
-predictions = model.predict(X)
-probabilities = model.predict_proba(X)[:, 1]
-```
-
----
 
 ## 📝 Conclusion
 
