@@ -192,8 +192,7 @@ elif page == "✅ Validate Models":
         st.markdown("""
         This page validates trained models using the **validation dataset** (3,639 records held out from training).
         
-        **📁 Files:**
-        - `model/validation_data_for_prediction.csv` - **Without** target column (for making predictions)
+        **📁 File:**
         - `model/validation_data_with_labels.csv` - **With** target column (for evaluation only)
         """)
 
