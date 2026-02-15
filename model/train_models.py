@@ -20,7 +20,7 @@ from xgboost import XGBClassifier
 # -----------------------------
 # Load dataset (use fixed CSV)
 # -----------------------------
-df = pd.read_csv("bank-train-data.csv", sep=";")
+df = pd.read_csv("bank-full.csv", sep=",")
 
 # -----------------------------
 # FEATURE ENGINEERING (5+ CUSTOM FEATURES)

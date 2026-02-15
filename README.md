@@ -19,7 +19,7 @@ We implement and compare **6 different machine learning models** with hyperparam
 
 **Source:** UCI Machine Learning Repository - Bank Marketing Data Set
 
-**Total Records:** 45,211 records (split into Train: 36,000 records (from 'model/bank-train-data.csv') | Test: 4,000 | Validation: 3,639)
+**Total Records:** 41,873 records (with 8,375 records in test data - 20% of total records)
 
 **Target Variable:** `y` - Whether the client subscribed to a term deposit (yes/no)
 
@@ -28,11 +28,8 @@ We implement and compare **6 different machine learning models** with hyperparam
 ## 🖥️ Streamlit App Features
 
 1. **🏠 Home** - Overview of the dataset and models
-2. **📊 Model Comparison** - Compare all models with visualizations of its evaluation metrics using training data.
-3. **✅ Validate Models** - Validate models using held-out validation data.Click "Validate Model" button.
-   "Single Model Validation" gives "Classification Report" and "Confusion Matrix"
-4. **🔍 Make Predictions** - Download the test data without output label using "📥 Download Test Data" button
-   and use it to make predictions via "Upload CSV file" or enter data manually
+2. **📊 Validate Models** - Compare all models with visualizations of its evaluation metrics once you upload the test data.There is a provision "Download Test Data" to download the test data.
+
 ---
 
 ### Features Description
@@ -81,8 +78,8 @@ We implement and compare **6 different machine learning models** with hyperparam
 | Decision Tree | 0.8296 | 0.8714 | 0.3803 | 0.8002 | 0.5156 | 0.4713 |
 | KNN | 0.8918 | 0.7810 | 0.5351 | 0.3456 | 0.4200 | 0.3739 |
 | Naive Bayes | 0.8431 | 0.8470 | 0.3758 | 0.5821 | 0.4567 | 0.3821 |
-| Random Forest (Ensemble) | 0.8962 | 0.9189 | 0.5366 | 0.6201 | 0.5753 | 0.5183 |
-| XGBoost (Ensemble) | 0.9096 | 0.9320 | 0.6359 | 0.4730 | 0.5425 | 0.5002 |
+| Random Forest | 0.8962 | 0.9189 | 0.5366 | 0.6201 | 0.5753 | 0.5183 |
+| XGBoost  | 0.9096 | 0.9320 | 0.6359 | 0.4730 | 0.5425 | 0.5002 |
 
 ### Hyperparameters Tuned
 
@@ -99,14 +96,14 @@ We implement and compare **6 different machine learning models** with hyperparam
 
 ## Model Performance Observations
 
-| ML Model Name | Observation about Model Performance |
-|---------------|-------------------------------------|
-| **Logistic Regression** | Achieved the **highest recall (0.8015)** among all models, meaning it correctly identifies ~80% of actual subscribers. However, it has low precision (0.3520), resulting in many false positives. Good baseline model with interpretable coefficients. The high recall makes it suitable when the cost of missing a potential subscriber is high. AUC of 0.8881 indicates good ranking ability. |
-| **Decision Tree** | Shows balanced performance with **second-highest recall (0.8002)** similar to Logistic Regression. Provides interpretable decision rules but slightly lower AUC (0.8714). The model benefits from class_weight='balanced' to handle the imbalanced dataset. Prone to overfitting without proper depth constraints. F1 score of 0.5156 is moderate. |
-| **KNN** | Has the **highest accuracy (0.8918)** among non-ensemble models but **lowest AUC (0.7810)** and recall (0.3456). This indicates the model is biased toward the majority class (non-subscribers). KNN struggles with the imbalanced dataset and high dimensionality. Best precision among simple models (0.5351) but misses many actual subscribers. |
-| **Naive Bayes** | Moderate performance across all metrics. Recall of 0.5821 is better than KNN but worse than Logistic Regression and Decision Tree. The assumption of feature independence may not hold well for this dataset. Fast training and prediction but **lowest MCC (0.3821)** among models with decent recall, indicating weaker correlation between predictions and actual values. |
-| **Random Forest (Ensemble)** | **Best overall model** with highest F1 score (0.5753) and MCC (0.5183), indicating the best balance between precision and recall. Strong AUC (0.9189) shows excellent ranking capability. Ensemble of 100 trees with max_depth=20 provides robust predictions. Good recall (0.6201) while maintaining reasonable precision (0.5366). Recommended for production deployment. |
-| **XGBoost (Ensemble)** | **Highest accuracy (0.9096)** and **highest AUC (0.9320)** among all models, demonstrating superior discriminative ability. Best precision (0.6359) means fewer false positives. However, recall (0.4730) is lower than Random Forest, missing more actual subscribers. Ideal when false positives are costly. Gradient boosting effectively captures complex patterns in the data. |
+| ML Model Name           | Observation about Model Performance                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|-------------------------| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Logistic Regression** | Achieves the **highest recall (0.8462)** among all models, meaning it correctly identifies nearly **85% of actual subscribers**. However, it has **very low precision (0.2487)**, resulting in a large number of false positives. This makes it suitable when the cost of missing a potential subscriber is high. As a baseline linear model, it remains highly interpretable. An **AUC of 0.8864** indicates good ranking capability despite lower overall accuracy.                      |
+| **Decision Tree**       | Provides a **balanced trade-off between recall (0.7413) and precision (0.3327)**, performing better than Logistic Regression in terms of F1 score (0.4593). The model captures non-linear patterns and benefits from proper depth constraints. An **AUC of 0.8187** suggests moderate discriminative power. While interpretable, the model is prone to overfitting without careful hyperparameter tuning.                                                                                  |
+| **KNN**                 | Exhibits **high accuracy (0.9126)** but **low recall (0.2839)** and **low AUC (0.7702)**, indicating strong bias toward the majority class (non-subscribers). Although precision (0.4799) is relatively good, the model fails to identify many actual subscribers. KNN struggles with class imbalance and high-dimensional feature space, making it less suitable for this problem despite its high accuracy.                                                                              |
+| **Naive Bayes**         | Demonstrates **moderate and stable performance** across metrics. With a recall of **0.5790**, it outperforms KNN in identifying subscribers, though it lags behind Logistic Regression and Decision Tree. The **F1 score (0.4673)** reflects reasonable balance between precision and recall. The assumption of feature independence may limit performance. Fast training and inference make it computationally efficient, but **MCC (0.4166)** indicates moderate predictive reliability. |
+| **Random Forest**       | **Best overall performing model** with the **highest F1 score (0.5427)** and **highest MCC (0.4984)**, indicating the strongest balance between precision and recall. A **high AUC (0.9215)** demonstrates excellent ranking ability. The ensemble effectively reduces overfitting and captures complex feature interactions. With recall (0.5734) and precision (0.5151) both reasonably high, this model is **well-suited for real-world deployment**.                                   |
+| **XGBoost **            | Achieves the **highest accuracy (0.9267)** and **highest AUC (0.9357)**, indicating superior discriminative performance. It also has the **highest precision (0.6091)**, resulting in fewer false positives. However, recall (0.3944) is lower than Random Forest, meaning more actual subscribers are missed. This model is ideal when minimizing false positives is critical. Gradient boosting effectively captures complex non-linear patterns in the data.                            |
 
 ---
 
