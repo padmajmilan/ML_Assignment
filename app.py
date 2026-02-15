@@ -545,53 +545,6 @@ elif page == "🔍 Make Predictions":
                     st.metric("Subscription Probability", f"{probability:.2%}")
 
 
-# ==================== FEATURE IMPORTANCE PAGE ====================
-elif page == "📈 Feature Importance":
-    st.header("📈 Feature Importance Analysis")
-
-    if not models_exist:
-        st.error("❌ Models not trained yet. Please run `python model/train_models.py` first.")
-    else:
-        model_choice = st.selectbox(
-            "Select Model for Feature Importance",
-            ["Random Forest", "XGBoost", "Decision Tree","KNN","Naive Bayes", "Logistic Regression"]
-        )
-
-        try:
-            model = joblib.load(f"model/{model_choice.replace(' ', '_')}.pkl")
-            feature_names = joblib.load("model/feature_names.pkl")
-
-            if hasattr(model, "feature_importances_"):
-                importance = model.feature_importances_
-
-                importance_df = pd.DataFrame({
-                    "Feature": feature_names,
-                    "Importance": importance
-                }).sort_values("Importance", ascending=True)
-
-                st.subheader(f"🌳 {model_choice} Feature Importance")
-
-                fig, ax = plt.subplots(figsize=(10, 8))
-                colors = plt.cm.viridis(np.linspace(0, 1, len(importance_df)))
-                ax.barh(importance_df["Feature"], importance_df["Importance"], color=colors)
-                ax.set_xlabel("Importance")
-                ax.set_title(f"Feature Importance - {model_choice}")
-                plt.tight_layout()
-                st.pyplot(fig)
-
-                st.markdown("---")
-                st.subheader("📋 Feature Importance Table")
-                st.dataframe(
-                    importance_df.sort_values("Importance", ascending=False).reset_index(drop=True),
-                    use_container_width=True
-                )
-            else:
-                st.warning("Selected model does not have feature importance attribute.")
-
-        except Exception as e:
-            st.error(f"Error loading model: {str(e)}")
-
-
 # ==================== FOOTER ====================
 st.markdown("---")
 st.markdown(
