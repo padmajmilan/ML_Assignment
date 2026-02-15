@@ -109,20 +109,19 @@ We implement and compare **6 different machine learning models** with hyperparam
 
 ## Key Findings and Recommendations
 
-### Best Model Selection
+Best Model Selection
 
-1. **For balanced performance:** **Random Forest** is recommended with the highest F1 (0.5753) and MCC (0.5183)
-2. **For ranking/scoring customers:** **XGBoost** has the highest AUC (0.9320)
-3. **For maximizing subscriber detection:** **Logistic Regression** has the highest recall (0.8015)
-4. **For minimizing false positives:** **XGBoost** has the highest precision (0.6359)
+For balanced performance:
+Random Forest is the most suitable model, achieving the highest F1 score (0.5427) and highest MCC (0.4984), indicating the best balance between precision and recall on the imbalanced dataset.
 
-### Challenges Addressed
+For ranking and scoring customers:
+XGBoost demonstrates superior discriminative ability with the highest AUC (0.9357), making it ideal for prioritizing customers based on subscription likelihood.
 
-- **Class Imbalance:** Handled using `class_weight='balanced'` parameter and stratified sampling
-- **Feature Engineering:** Created 8 domain-specific features to improve model performance
-- **Hyperparameter Tuning:** Used GridSearchCV with 5-fold cross-validation for optimal parameters
+For maximizing subscriber detection:
+Logistic Regression achieves the highest recall (0.8462), successfully identifying the majority of actual subscribers. This model is effective when the cost of missing potential subscribers is high.
 
----
+For minimizing false positives:
+XGBoost provides the highest precision (0.6091), resulting in fewer incorrect positive predictions, which is valuable when outreach costs are high.
 
 
 ## 🚀 To run the app locally
@@ -165,5 +164,5 @@ The app will be available at `http://localhost:8501`
 
 ## 📝 Conclusion
 
-This project successfully implemented and compared 6 machine learning models for predicting term deposit subscriptions. The **Random Forest** model emerged as the best overall performer with balanced precision-recall trade-off (F1=0.5753), while **XGBoost** achieved the highest discriminative ability (AUC=0.9320). Feature engineering and hyperparameter tuning significantly improved model performance on this imbalanced classification task.
-
+This project successfully implemented and evaluated six machine learning classification models for predicting customer subscription to term deposits. Among the evaluated models, the Random Forest classifier emerged as the best overall performer, achieving the highest F1 score (0.5427) and Matthews Correlation Coefficient (0.4984), indicating a strong balance between precision and recall on this imbalanced dataset. The XGBoost model demonstrated the highest accuracy (0.9267) and highest AUC (0.9357), reflecting superior discriminative and ranking capability, though with comparatively lower recall.
+Overall, the study demonstrates the importance of selecting models based on task-specific objectives, where Random Forest is suitable for balanced decision-making, while XGBoost is preferred when minimizing false positives is critical.
