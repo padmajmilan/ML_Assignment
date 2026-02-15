@@ -125,6 +125,31 @@ We implement and compare **6 different machine learning models** with hyperparam
 - **Feature Engineering:** Created 8 domain-specific features to improve model performance
 - **Hyperparameter Tuning:** Used GridSearchCV with 5-fold cross-validation for optimal parameters
 
+---
+
+
+## 🚀 To run the app locally
+
+### 1. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Train the Models
+
+```bash
+python model/train_models.py
+```
+### 3. Run the Streamlit App
+
+```bash
+streamlit run app.py
+```
+
+The app will be available at `http://localhost:8501`
+
+---
 
 
 ## 📦 Dependencies
